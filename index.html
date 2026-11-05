@@ -1,1 +1,211 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Grok Digest</title></head><body><h1>Grok Digest</h1><p>2026-11-05 ready. Full version coming.</p></body></html>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grok Digest · 2026-11-05</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#faf9f6; --surface:#fff; --text:#1a1a1a; --text-secondary:#4a4a4a; --text-muted:#6b6b6b; --accent:#c41e3a; --border:#e5e1d8; --serif:"Source Serif 4","Noto Serif TC",Georgia,serif; --sans:"Inter",-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC",sans-serif; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;font-size:16.5px}
+.app{max-width:980px;margin:0 auto;padding:24px 20px 60px}
+.header{border-bottom:2px solid var(--accent);padding-bottom:16px;margin-bottom:24px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:28px;height:28px;background:var(--accent);border-radius:3px;display:flex;align-items:center;justify-content:center;color:white;font-family:var(--serif);font-weight:700;font-size:16px}
+.logo h1{font-family:var(--serif);font-size:1.4rem;font-weight:700}
+.date-line{color:var(--text-muted);font-size:0.85rem;margin-top:4px}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 28px}
+.nav button{background:var(--surface);border:1px solid var(--border);padding:8px 14px;border-radius:4px;font-size:0.85rem;cursor:pointer;color:var(--text)}
+.nav button.active{background:var(--accent);color:white;border-color:var(--accent)}
+.kicker{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:2.1rem;font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin-bottom:12px}
+.exec{font-family:var(--serif);font-size:1.08rem;line-height:1.75;border-left:3px solid var(--accent);padding-left:16px;margin-bottom:28px}
+.section{display:none}.section.active{display:block}
+.section h3{font-family:var(--serif);font-size:1.35rem;font-weight:700;margin:28px 0 12px;border-bottom:1px solid var(--border);padding-bottom:6px}
+.item{margin-bottom:16px}.item h4{font-size:1rem;font-weight:600;margin-bottom:4px}.item p{color:var(--text-secondary);margin-bottom:6px}
+.table-wrap{overflow-x:auto;margin:18px 0 24px;border:1px solid var(--border);border-radius:4px}
+table{width:100%;border-collapse:collapse;font-size:0.85rem}
+th{background:#f5f3ef;font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted)}
+td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top}
+.sources{margin-top:20px;padding-top:12px;border-top:1px dashed var(--border);font-size:0.85rem}
+.sources strong{display:block;margin-bottom:6px}
+.sources a{color:var(--accent);text-decoration:none;display:inline-block;margin-right:12px;margin-bottom:4px}
+.review{background:#f8f6f2;border:1px solid var(--border);padding:18px 20px;margin-top:12px}
+.review h4{font-family:var(--serif);margin:16px 0 8px}
+.calendar{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;max-width:360px;margin:12px 0}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;font-size:0.8rem;text-align:center}
+.calendar-grid .day-name{color:#6b6b6b;padding:6px 0;font-size:0.7rem}
+.calendar-grid .date{padding:8px 0;border-radius:4px}
+.calendar-grid .date.today{background:#c41e3a;color:#fff;font-weight:700}
+.note{font-size:0.8rem;color:var(--text-muted);margin-top:32px;border-top:1px solid var(--border);padding-top:12px}
+@media(max-width:640px){h2{font-size:1.7rem}.nav button{padding:6px 10px;font-size:0.8rem}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="logo"><div class="logo-mark">G</div><h1>Grok Digest</h1></div>
+    <div class="date-line">2026年11月5日 · 星期四 · MVP 1.0</div>
+  </header>
+  <nav class="nav">
+    <button class="active" data-target="calendar">Calendar</button>
+    <button data-target="overview">總覽</button>
+    <button data-target="world">世界</button>
+    <button data-target="ai">AI</button>
+    <button data-target="culture">文化</button>
+    <button data-target="taiwan">台灣</button>
+    <button data-target="social">Social Voices</button>
+    <button data-target="review">Review</button>
+  </nav>
+  <div class="kicker">Daily Briefing</div>
+  <h2>美國藍潮落地，台灣市場與信任同時震盪</h2>
+  <div class="exec">美國期中選舉民主黨以明顯優勢拿下參眾兩院控制權，在多個傳統共和黨據點翻盤，對川普政府形成強力制衡。市場反應先恐慌後回穩：台股4日盤中大跌近1500點後收斂，外資賣超規模大。AI領域持續推進模型與產品，但安全與供應鏈風險並行。台灣本地同時發生銀行系統遭駭、工業事故影響AI材料供應、地方選舉倒數三週等事件。社群討論溫度集中在政治傳導速度與系統信任；Polymarket則顯示美國政治不確定性高，台灣地方選舉仍偏國民黨優勢。</div>
+  <section id="calendar" class="section active">
+    <h3>Calendar</h3>
+    <div class="calendar">
+      <div style="font-family:var(--serif);font-weight:600;margin-bottom:12px;">November 2026</div>
+      <div class="calendar-grid">
+        <div class="day-name">日</div><div class="day-name">一</div><div class="day-name">二</div><div class="day-name">三</div><div class="day-name">四</div><div class="day-name">五</div><div class="day-name">六</div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div class="date">1</div>
+        <div class="date">2</div><div class="date">3</div><div class="date">4</div><div class="date today">5</div><div class="date">6</div><div class="date">7</div><div class="date">8</div>
+        <div class="date">9</div><div class="date">10</div><div class="date">11</div><div class="date">12</div><div class="date">13</div><div class="date">14</div><div class="date">15</div>
+        <div class="date">16</div><div class="date">17</div><div class="date">18</div><div class="date">19</div><div class="date">20</div><div class="date">21</div><div class="date">22</div>
+        <div class="date">23</div><div class="date">24</div><div class="date">25</div><div class="date">26</div><div class="date">27</div><div class="date">28</div><div class="date">29</div>
+        <div class="date">30</div>
+      </div>
+    </div>
+    <p>目前僅 11 月 5 日有內容。之後每天新增時會自動高亮。</p>
+  </section>
+  <section id="overview" class="section">
+    <h3>總覽</h3>
+    <p>上層為整體觀察，下方依分類展開較細的十則清單與台灣／社群細節。點上方分類即可切換。</p>
+    <div class="item"><h4>核心事件</h4><p>美國期中選舉民主黨全面掌控國會，川普承認伊朗戰爭影響結果。台灣股市與資安事件同步反應外部衝擊與內部脆弱。</p></div>
+  </section>
+  <section id="world" class="section">
+    <h3>世界大事</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>事件</th><th>要點</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>民主黨掌控國會</td><td>參眾兩院多數，川普承認伊朗戰爭影響</td></tr>
+          <tr><td>2</td><td>停援以色列</td><td>年底結束約40億美元年度軍事援助</td></tr>
+          <tr><td>3</td><td>以色列選舉</td><td>反對陣營領先；美首位穆斯林參議員</td></tr>
+          <tr><td>4</td><td>俄烏衝突</td><td>空襲援助中心至少33死</td></tr>
+          <tr><td>5</td><td>歷史性勝選</td><td>德州、堪薩斯等多州翻藍</td></tr>
+          <tr><td>6</td><td>市場反應</td><td>美股反彈、油價下跌</td></tr>
+          <tr><td>7</td><td>伊朗反應</td><td>「對戰爭說不」</td></tr>
+          <tr><td>8</td><td>共和黨領導層</td><td>Johnson不續任，角逐開始</td></tr>
+          <tr><td>9</td><td>其他地緣</td><td>孟加拉工資、新加坡霾害法、NASA</td></tr>
+          <tr><td>10</td><td>全球反應</td><td>中國等表態願合作</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="item"><h4>1. 民主黨全面掌控國會</h4><p>期中選舉民主黨拿下眾議院與參議院（參議院約54-44，眾議院領先明顯）。選民對川普不滿、物價與伊朗戰爭是主因。川普承認伊朗戰爭「很大程度上是真的」影響了結果。</p></div>
+    <div class="sources"><strong>延伸連結</strong><a href="https://www.reuters.com/world/us/" target="_blank">Reuters US</a><a href="https://www.nytimes.com/section/politics" target="_blank">NYT Politics</a></div>
+  </section>
+  <section id="ai" class="section">
+    <h3>AI</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>主題</th><th>要點</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>OpenAI用戶</td><td>ChatGPT 12億周活，搜尋量約Google 20%</td></tr>
+          <tr><td>2</td><td>Anthropic IPO</td><td>S-1公開，營收爆增但虧損巨大，風險警告</td></tr>
+          <tr><td>3</td><td>Apple Siri</td><td>第三方App接入新Siri</td></tr>
+          <tr><td>4</td><td>AMD財報</td><td>資料中心大增，挑戰Nvidia</td></tr>
+          <tr><td>5</td><td>Google教育</td><td>拒AI可能失Search</td></tr>
+          <tr><td>6</td><td>新模型</td><td>Kimi、Mistral等密集釋出</td></tr>
+          <tr><td>7</td><td>自我改進</td><td>模型編輯權重相關研究</td></tr>
+          <tr><td>8</td><td>基礎設施</td><td>大規模募資與資料中心</td></tr>
+          <tr><td>9</td><td>商業應用</td><td>成本下降、agent進實體</td></tr>
+          <tr><td>10</td><td>政策與社會</td><td>教育、安全、治理議題升溫</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="item"><h4>1. OpenAI</h4><p>ChatGPT 周活躍用戶達 12 億。</p></div>
+    <div class="sources"><strong>延伸連結</strong><a href="https://openai.com/news/" target="_blank">OpenAI News</a><a href="https://www.anthropic.com/news" target="_blank">Anthropic News</a></div>
+  </section>
+  <section id="culture" class="section">
+    <h3>文化</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>主題</th><th>要點</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Godzilla & Ramayana</td><td>全球開跑，IMAX競爭</td></tr>
+          <tr><td>2</td><td>Netflix新季</td><td>Black Doves等回歸</td></tr>
+          <tr><td>3</td><td>好萊塢反應</td><td>明星慶祝選舉結果</td></tr>
+          <tr><td>4</td><td>韓流合作</td><td>Paramount投資K-pop片</td></tr>
+          <tr><td>5</td><td>新電影</td><td>McDonagh新作等</td></tr>
+          <tr><td>6</td><td>Pixar變動</td><td>領導層調整</td></tr>
+          <tr><td>7</td><td>Batman相關</td><td>Johansson談角色難度</td></tr>
+          <tr><td>8</td><td>影院數據</td><td>AMC營收創新高</td></tr>
+          <tr><td>9</td><td>串流vs實體</td><td>票房復甦持續</td></tr>
+          <tr><td>10</td><td>其他娛樂</td><td>紀錄片、節日片</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="item"><h4>《Godzilla Minus Zero》</h4><p>日本首日約 9.1 億日圓，破紀錄。</p></div>
+    <div class="sources"><strong>延伸連結</strong><a href="https://www.imdb.com/" target="_blank">IMDb</a><a href="https://variety.com/" target="_blank">Variety</a></div>
+  </section>
+  <section id="taiwan" class="section">
+    <h3>台灣</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>主題</th><th>要點</th><th>狀態</th></tr></thead>
+        <tbody>
+          <tr><td>股市與匯率</td><td>高低差近1900點，外資賣超約1500億</td><td>新台幣走弱逼近33</td></tr>
+          <tr><td>永豐銀行遭駭</td><td>約418人／4176萬異常轉帳</td><td>款項已返還，司法調查中</td></tr>
+          <tr><td>Panasonic爆炸</td><td>湖口廠影響銅箔基板</td><td>AI供應鏈風險</td></tr>
+          <tr><td>地方選舉</td><td>11/28投票，台北市長焦點</td><td>假訊息防範升溫</td></tr>
+          <tr><td>其他</td><td>蘇花安、程萬軍事件等</td><td>進行中</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="item"><h4>股市</h4><p>高低差近 1900 點，外資賣超約 1500 億。</p></div>
+    <div class="sources"><strong>延伸連結</strong><a href="https://www.twse.com.tw/" target="_blank">台灣證交所</a><a href="https://www.cna.com.tw/" target="_blank">中央社</a></div>
+  </section>
+  <section id="social" class="section">
+    <h3>Social Voices</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>主題</th><th>溫度</th><th>主要聲音</th></tr></thead>
+        <tbody>
+          <tr><td>美國選舉</td><td>觀望為主</td><td>兩黨挺台傳統 vs 部分進步派擔憂</td></tr>
+          <tr><td>永豐事件</td><td>信任受損</td><td>「錢退了但心沒退」</td></tr>
+          <tr><td>台股外資</td><td>短期恐慌後半信半疑</td><td>賣超規模被反覆提及</td></tr>
+          <tr><td>地方選戰</td><td>高溫檢視</td><td>假訊息與帶風向指控</td></tr>
+          <tr><td>Polymarket</td><td>結構優勢未翻轉</td><td>台北市長約67%／地方KMT約78%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="item"><h4>社群溫度</h4><p>觀望與擔憂為主，「錢退了但心沒退」的聲音明顯。</p></div>
+    <div class="sources"><strong>延伸連結</strong><a href="https://polymarket.com/" target="_blank">Polymarket</a></div>
+  </section>
+  <section id="review" class="section">
+    <h3>Review</h3>
+    <div class="review">
+      <h4>今日過程與修正</h4>
+      <p>Calendar 從總覽移到最上方獨立分類。</p>
+      <p>GitHub Pages 已啟用，固定網址建立完成。</p>
+      <h4>AI Takeaway</h4>
+      <p>單一高影響政治事件與多個本地脆弱點疊加。反應速度快於結構改變。過程必須被記錄，才能真正累積。</p>
+      <h4>規則 MVP 1.0</h4>
+      <p>觸發詞 Go / Grok Digest。產出後同步至固定網址。Review 含過程、學習、takeaway、規則版本。</p>
+    </div>
+  </section>
+  <p class="note">Grok Digest · 2026-11-05 · 固定網址版本。重新整理即可看到最新內容。</p>
+</div>
+<script>
+document.querySelectorAll('.nav button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.target).classList.add('active');
+  });
+});
+</script>
+</body></html>
