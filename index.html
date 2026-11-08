@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grok Digest · 2026-11-05</title>
+<title>Grok Digest · 2026-11-08</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&display=swap" rel="stylesheet">
@@ -38,9 +38,16 @@ td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top}
 .calendar{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;max-width:360px;margin:12px 0}
 .calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;font-size:0.8rem;text-align:center}
 .calendar-grid .day-name{color:#6b6b6b;padding:6px 0;font-size:0.7rem}
-.calendar-grid .date{padding:8px 0;border-radius:4px}
+.calendar-grid .date{padding:8px 0;border-radius:4px;cursor:pointer}
 .calendar-grid .date.today{background:#c41e3a;color:#fff;font-weight:700}
+.calendar-grid .date.archived{background:#f0eee9}
 .note{font-size:0.8rem;color:var(--text-muted);margin-top:32px;border-top:1px solid var(--border);padding-top:12px}
+.visual{background:linear-gradient(135deg,#f5f3ef,#fff);border:1px solid var(--border);border-radius:6px;padding:16px;margin:16px 0;font-family:var(--serif);text-align:center}
+.visual .big{font-size:2.2rem;font-weight:700;color:var(--accent);line-height:1}
+.visual .label{font-size:0.9rem;color:var(--text-muted);margin-top:4px}
+.date-switch{margin-bottom:16px;font-size:0.85rem}
+.date-switch button{margin-right:8px;padding:4px 10px;border:1px solid var(--border);background:#fff;border-radius:4px;cursor:pointer}
+.date-switch button.active{background:var(--accent);color:#fff}
 @media(max-width:640px){h2{font-size:1.55rem}.nav button{padding:6px 10px;font-size:0.8rem}}
 </style>
 </head>
@@ -48,7 +55,11 @@ td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top}
 <div class="app">
   <header class="header">
     <div class="logo"><div class="logo-mark">G</div><h1>Grok Digest</h1></div>
-    <div class="date-line">2026年11月5日 · 星期四 · MVP 1.0</div>
+    <div class="date-line">2026年11月8日 · 星期日 · MVP 1.0</div>
+    <div class="date-switch">
+      <button class="active" onclick="switchDate('1108')">11/08</button>
+      <button onclick="switchDate('1107')">11/07</button>
+    </div>
   </header>
   <nav class="nav">
     <button class="active" data-target="overview">總覽</button>
@@ -61,225 +72,167 @@ td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top}
     <button data-target="calendar">Calendar</button>
   </nav>
 
-  <section id="overview" class="section active">
-    <div class="kicker">Overview</div>
-    <h2>美國藍潮落地，台灣市場與信任同時震盪</h2>
-    <div class="brief">美國期中選舉民主黨以明顯優勢拿下參眾兩院控制權，在多個傳統共和黨據點翻盤，對川普政府形成強力制衡。市場反應先恐慌後回穩：台股4日盤中大跌近1500點後收斂，外資賣超規模大。AI領域持續推進模型與產品，但安全與供應鏈風險並行。台灣本地同時發生銀行系統遭駭、工業事故影響AI材料供應、地方選舉倒數三週等事件。社群討論溫度集中在政治傳導速度與系統信任；Polymarket則顯示美國政治不確定性高，台灣地方選舉仍偏國民黨優勢。</div>
-    <div class="item"><h4>核心觀察</h4><p>單一高影響政治事件與多個本地脆弱點疊加。市場與社群的反應速度遠快於結構性改變的速度：股市可在數小時內大幅波動，銀行信任可在單一漏洞事件中受損，但供應鏈集中度、選舉制度與地緣依賴的調整需要更長時間。</p></div>
-  </section>
+  <!-- 11/08 content (default) -->
+  <div id="content-1108">
+    <section id="overview" class="section active">
+      <div class="kicker">Overview</div>
+      <h2>紐西蘭大選初步結果出爐，Anthropic IPO 估值下修，台灣選舉倒數持續</h2>
+      <div class="brief">紐西蘭大選投票結束，初步結果工黨領先普選得票、國家黨席次較多，特別票尚未計完。AI 方面 Anthropic 推進 IPO，但市場估值從先前預期下修至約 1.25–1.75 兆；OpenAI 完成 110 億融資估值 1.25 兆。台灣九合一選舉倒數，台北市長選戰車掃與造勢升溫，外交部關閉駐巴紐代表處後續仍受關注。</div>
+      <div class="visual"><div class="big">NZ</div><div class="label">紐西蘭大選 · 初步結果工黨領先得票</div></div>
+    </section>
 
-  <section id="world" class="section">
-    <div class="kicker">World</div>
-    <h2>民主黨全面掌控國會，地緣轉向明顯</h2>
-    <div class="brief">期中選舉民主黨拿下眾議院與參議院（參議院約54-44，眾議院領先明顯），打破共和黨統一政府。選民對川普不滿（約43%表示投票是為了反對他）、物價與伊朗戰爭是主因。川普說「我沒在選票上，如果有會大勝」，但承認伊朗戰爭「很大程度上是真的」影響了結果。同日宣布年底停止對以色列約40億美元年度軍事援助。以色列反對陣營領先，美國出現首位穆斯林參議員。俄烏衝突持續激烈。</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>#</th><th>事件</th><th>要點</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>民主黨掌控國會</td><td>參眾兩院多數，川普承認伊朗戰爭影響</td></tr>
-          <tr><td>2</td><td>停援以色列</td><td>年底結束約40億美元年度軍事援助</td></tr>
-          <tr><td>3</td><td>以色列選舉</td><td>反對陣營領先；美首位穆斯林參議員</td></tr>
-          <tr><td>4</td><td>俄烏衝突</td><td>空襲援助中心至少33死</td></tr>
-          <tr><td>5</td><td>歷史性勝選</td><td>德州、堪薩斯等多州翻藍</td></tr>
-          <tr><td>6</td><td>市場反應</td><td>美股反彈、油價下跌</td></tr>
-          <tr><td>7</td><td>伊朗反應</td><td>「對戰爭說不」</td></tr>
-          <tr><td>8</td><td>共和黨領導層</td><td>Johnson不續任，角逐開始</td></tr>
-          <tr><td>9</td><td>其他地緣</td><td>孟加拉工資、新加坡霾害法、NASA</td></tr>
-          <tr><td>10</td><td>全球反應</td><td>中國等表態願合作</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="item"><h4>1. 民主黨全面掌控國會</h4><p>期中選舉民主黨拿下眾議院與參議院（參議院約54-44，眾議院領先明顯），打破共和黨統一政府。選民對川普不滿（約43%表示投票是為了反對他）、物價與伊朗戰爭是主因。川普說「我沒在選票上，如果有會大勝」，但承認伊朗戰爭「很大程度上是真的」影響了結果。</p></div>
-    <div class="item"><h4>2. 川普宣布年底停止對以色列約40億美元年度軍事援助</h4><p>在選舉當天早上宣布，稱與納坦雅胡有協議、以色列不需要。現有備忘錄本到2028年，此舉被視為重大轉向，也與選情有關。</p></div>
-    <div class="item"><h4>3. 以色列選舉後續</h4><p>反對陣營拿下約67席對執政集團53席（120席國會），總統開始諮詢組閣。同時，美國出現首位穆斯林參議員（密西根的Abdul El-Sayed，進步派，主張停援以色列），進一步改變對以政治氣氛。</p></div>
-    <div class="item"><h4>4. 俄軍空襲烏克蘭</h4><p>對扎波羅熱等地援助中心與避難所轟炸，至少33死、數十人失蹤。和平談判仍在進行，但戰場持續激烈。</p></div>
-    <div class="item"><h4>5. 歷史性勝選細節</h4><p>德州民主黨人Talarico拿下參議院（1988年以來首次），德州州長等職位翻藍；堪薩斯出現大蕭條以來首位民主黨參議員；喬治亞等州也有突破。民主黨深入共和黨強勢區。</p></div>
-    <div class="item"><h4>6. 市場反應</h4><p>民主黨勝選後美股反彈（道瓊一度大漲），油價因對伊朗緊張緩和預期下跌。</p></div>
-    <div class="item"><h4>7. 伊朗反應</h4><p>伊朗方面稱美國選民「對戰爭說不」。同時荷莫茲海峽附近仍有緊張與美方有限打擊報導。</p></div>
-    <div class="item"><h4>8. 眾議院共和黨領導層變動</h4><p>現任議長Mike Johnson宣布不續任黨團領袖，Jim Jordan等角逐。</p></div>
-    <div class="item"><h4>9. 其他地緣</h4><p>孟加拉成衣業工資調升（抗議後）；新加坡強化跨境霾害法；NASA Swift望遠鏡重返大氣層結束任務。</p></div>
-    <div class="item"><h4>10. 全球反應</h4><p>中國表示願繼續與美合作執行既有協議；歐洲等對美國政治格局變化保持關注。</p></div>
-    <div class="sources"><strong>延伸連結</strong><a href="https://www.reuters.com/world/us/" target="_blank">Reuters US</a><a href="https://www.nytimes.com/section/politics" target="_blank">NYT Politics</a><a href="https://en.wikipedia.org/wiki/2026_United_States_elections" target="_blank">Wikipedia 2026 Elections</a></div>
-  </section>
-
-  <section id="ai" class="section">
-    <div class="kicker">AI</div>
-    <h2>從用戶規模走到機房與工作入口</h2>
-    <div class="brief">ChatGPT周活躍用戶達12億，搜尋式查詢量約為Google的20%。Anthropic S-1已公開（代號ANT），2026上半年營收約163億美元，淨虧損巨大（多數為會計項目），並警告AI可能帶來生物武器、地緣不穩與人類失控風險。Apple Siri開放第三方App接入；AMD資料中心幾乎翻倍。AI從聊天框走進工作入口與基礎設施。</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>#</th><th>主題</th><th>要點</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>OpenAI用戶</td><td>ChatGPT 12億周活，搜尋量約Google 20%</td></tr>
-          <tr><td>2</td><td>Anthropic IPO</td><td>S-1公開，營收暴增但虧損巨大，風險警告</td></tr>
-          <tr><td>3</td><td>Apple Siri</td><td>第三方App接入新Siri</td></tr>
-          <tr><td>4</td><td>AMD財報</td><td>資料中心大增，挑戰Nvidia</td></tr>
-          <tr><td>5</td><td>Google教育</td><td>拒AI可能失Search</td></tr>
-          <tr><td>6</td><td>新模型</td><td>Kimi、Mistral等密集釋出</td></tr>
-          <tr><td>7</td><td>自我改進</td><td>模型編輯權重相關研究</td></tr>
-          <tr><td>8</td><td>基礎設施</td><td>大規模募資與資料中心</td></tr>
-          <tr><td>9</td><td>商業應用</td><td>成本下降、agent進實體</td></tr>
-          <tr><td>10</td><td>政策與社會</td><td>教育、安全、治理議題升溫</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="item"><h4>1. OpenAI數據</h4><p>ChatGPT周活躍用戶達12億，搜尋式查詢量約為Google的20%。顯示消費端滲透加速。</p></div>
-    <div class="item"><h4>2. Anthropic IPO進程</h4><p>S-1已公開（代號ANT），2026上半年營收約163億美元，淨虧損巨大（多數為會計項目）。警告AI可能帶來生物武器、地緣不穩與人類失控風險。可能11月中下旬上市，估值討論在1.5-2兆美元級。</p></div>
-    <div class="item"><h4>3. Apple Siri開放</h4><p>iOS 27.3等beta中，透過App Intents讓第三方App接入新Siri AI；中國試行與阿里巴巴Qwen合作。</p></div>
-    <div class="item"><h4>4. AMD強勁財報</h4><p>Q3營收134億美元（年增45%），資料中心幾乎翻倍，靠MI450等。Nvidia一枝獨秀時代進一步被挑戰。</p></div>
-    <div class="item"><h4>5. Google教育政策</h4><p>K-12學校若拒絕Google AI工具，學生帳號可能失去Google Search。AI深度綁定搜尋與教育產品。</p></div>
-    <div class="item"><h4>6. 新模型與開源浪潮</h4><p>Kimi K3.1 Pro（大規模MoE）、Mistral Large 4（開放權重、百萬context）等密集釋出；中國開源模型持續追趕。</p></div>
-    <div class="item"><h4>7. AI自我改進相關討論</h4><p>有研究聲稱前沿模型（如Astra）能直接讀寫/編輯其他模型權重以改善表現，引發遞迴自我改進與安全辯論。</p></div>
-    <div class="item"><h4>8. 基礎設施與資金</h4><p>Meta、Oracle等持續發債/募資建AI資料中心；Amazon宣布密西西比大型資料中心擴張；晶片供應與電力成為瓶頸。</p></div>
-    <div class="item"><h4>9. 商業與成本</h4><p>有企業報告自架開源模型大幅降低編碼推論成本；AI agent開始進入實體環境測試與硬體設計。</p></div>
-    <div class="item"><h4>10. 政策與社會影響</h4><p>國會可能出現針對超智能AI的限制法案討論；教育、搜尋、安全（資料外洩、代理權限）成為日常議題。AI從「工具」轉為「基礎設施與治理對象」。</p></div>
-    <div class="sources"><strong>延伸連結</strong><a href="https://openai.com/news/" target="_blank">OpenAI News</a><a href="https://www.anthropic.com/news" target="_blank">Anthropic News</a><a href="https://www.theverge.com/ai-artificial-intelligence" target="_blank">The Verge AI</a></div>
-  </section>
-
-  <section id="culture" class="section">
-    <div class="kicker">Culture</div>
-    <h2>怪獸與神話爭奪大銀幕</h2>
-    <div class="brief">《Godzilla Minus Zero》日本首日破紀錄，約9.1億日圓，北美等市場本週開跑，全球開局預期強勁。同時印度史詩《Ramayana》同步全球上映，IMAX排片競爭激烈（印度Godzilla延後）。在AI高度滲透的年代，最受歡迎的文化內容仍是「非AI主導的史詩與經典IP續作」。</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>#</th><th>主題</th><th>要點</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>Godzilla & Ramayana</td><td>全球開跑，IMAX競爭</td></tr>
-          <tr><td>2</td><td>Netflix新季</td><td>Black Doves等回歸</td></tr>
-          <tr><td>3</td><td>好萊塢反應</td><td>明星慶祝選舉結果</td></tr>
-          <tr><td>4</td><td>韓流合作</td><td>Paramount投資K-pop片</td></tr>
-          <tr><td>5</td><td>新電影</td><td>McDonagh新作等</td></tr>
-          <tr><td>6</td><td>Pixar變動</td><td>領導層調整</td></tr>
-          <tr><td>7</td><td>Batman相關</td><td>Johansson談角色難度</td></tr>
-          <tr><td>8</td><td>影院數據</td><td>AMC營收創新高</td></tr>
-          <tr><td>9</td><td>串流vs實體</td><td>票房復甦持續</td></tr>
-          <tr><td>10</td><td>其他娛樂</td><td>紀錄片、節日片</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="item"><h4>1. 《Godzilla Minus Zero》日本首日破紀錄</h4><p>約9.1億日圓，北美等市場本週開跑，全球開局預期強勁。同時印度史詩《Ramayana》同步全球上映，IMAX排片競爭激烈（印度Godzilla延後）。</p></div>
-    <div class="item"><h4>2. Netflix 11月重點</h4><p>《Black Doves》第二季（Keira Knightley等）、《The Hunting Wives》回歸，加上多部新片。</p></div>
-    <div class="item"><h4>3. 好萊塢慶祝民主黨勝選</h4><p>明星在社群發文，稱「川普政權結束」之類。</p></div>
-    <div class="item"><h4>4. 韓國內容與好萊塢合作深化</h4><p>Paramount等投資/發行K-pop相關電影，從規劃階段就合作。</p></div>
-    <div class="item"><h4>5. 新電影陣容</h4><p>Martin McDonagh新作《Wild Horse Nine》（John Malkovich、Sam Rockwell）、《I Play Rocky》（史泰龍故事）等11月上映。</p></div>
-    <div class="item"><h4>6. Pixar領導層調整</h4><p>Jim Morris轉為榮譽職位，新任總裁等變動。</p></div>
-    <div class="item"><h4>7. Scarlett Johansson談《The Batman Part II》</h4><p>角色難度高、帶來存在焦慮。</p></div>
-    <div class="item"><h4>8. AMC等連鎖影院</h4><p>Q3營收創新高，票房復甦持續。</p></div>
-    <div class="item"><h4>9. 串流與實體影院辯論</h4><p>Netflix仍推AI推薦功能，但影院端數據顯示實體體驗反彈。</p></div>
-    <div class="item"><h4>10. 其他</h4><p>Justin Timberlake紀錄片即將上線；各種節日片與復刻上映（如Rocky系列活動）。</p></div>
-    <div class="sources"><strong>延伸連結</strong><a href="https://www.imdb.com/" target="_blank">IMDb</a><a href="https://variety.com/" target="_blank">Variety</a><a href="https://www.hollywoodreporter.com/" target="_blank">Hollywood Reporter</a></div>
-  </section>
-
-  <section id="taiwan" class="section">
-    <div class="kicker">Taiwan</div>
-    <h2>股市劇烈震盪，銀行信任受損</h2>
-    <div class="brief">受美國選舉影響，台股4日出現大幅震盪，加權指數最低至41855點，收42948點（跌358點），成交額超過1.1兆，外資賣超約1500億。新台幣匯率走弱逼近33元。永豐銀行新網銀系統遭外部駭客利用供應商設定漏洞，造成約418人、427筆、總額約4176萬元異常轉帳，款項當日返還，但信任受損。Panasonic湖口廠爆炸影響高階銅箔基板供應，連動AI伺服器相關鏈條。地方九合一選舉定於11月28日投票，台北市長選戰為焦點。</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>主題</th><th>要點</th><th>狀態</th></tr></thead>
-        <tbody>
-          <tr><td>股市與匯率</td><td>高低差近1900點，外資賣超約1500億</td><td>新台幣走弱逼近33</td></tr>
-          <tr><td>永豐銀行遭駭</td><td>約418人／4176萬異常轉帳</td><td>款項已返還，司法調查中</td></tr>
-          <tr><td>Panasonic爆炸</td><td>湖口廠影響銅箔基板</td><td>AI供應鏈風險</td></tr>
-          <tr><td>地方選舉</td><td>11/28投票，台北市長焦點</td><td>假訊息防範升溫</td></tr>
-          <tr><td>其他</td><td>蘇花安、程萬軍事件等</td><td>進行中</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="item"><h4>股市與匯率</h4><p>受美國選舉影響，台股4日出現大幅震盪，加權指數最低至41855點，收42948點（跌358點），成交額超過1.1兆，外資賣超約1500億。新台幣匯率走弱逼近33元。半導體與AI相關類股先跌後部分回穩。</p></div>
-    <div class="item"><h4>永豐銀行遭駭</h4><p>新網銀系統遭外部駭客利用供應商設定漏洞，造成約418人、427筆、總額約4176萬元異常轉帳（多為10萬元至同一帳戶）。銀行確認無個資外洩跡象，款項當日返還，董總鞠躬道歉並表示將向供應商求償，事件已進入司法調查。此事件凸顯數位金融供應鏈風險與信任問題。</p></div>
-    <div class="item"><h4>Panasonic 湖口廠爆炸</h4><p>造成人員受傷與失聯，影響高階銅箔基板供應，連動AI伺服器相關鏈條。</p></div>
-    <div class="item"><h4>地方九合一選舉</h4><p>定於11月28日投票，台北市長選戰（蔣萬安 vs 沈伯洋）為焦點。警政與國安單位加強防範假訊息與境外干預。賴清德公開警告可疑帳號帶風向。國防預算部分軍購項目（如NASAMS、潛艦後續）仍在審查或凍結狀態。</p></div>
-    <div class="item"><h4>其他</h4><p>蘇花安動土（預定2032年通車）、中國籍人士程萬軍桃機求庇護遭遣返、農業與民生議題等。</p></div>
-    <div class="sources"><strong>延伸連結</strong><a href="https://www.twse.com.tw/" target="_blank">台灣證交所</a><a href="https://www.cna.com.tw/" target="_blank">中央社</a><a href="https://udn.com/news/index" target="_blank">聯合新聞網</a></div>
-  </section>
-
-  <section id="social" class="section">
-    <div class="kicker">Social Voices</div>
-    <h2>信任動搖，結構優勢尚未翻轉</h2>
-    <div class="brief">X上的討論以美國選舉結果為全球主軸，台灣相關則聚焦影響評估與本地事件。對美國藍潮的反應包括：承認兩黨皆有挺台傳統者，以及擔憂部分進步派議員對台支持強度者；整體偏觀望而非極端。永豐事件引發「錢退了但心沒退」「供應商漏洞再次發生」的聲音明顯，夾雜資安疲勞感。Polymarket顯示台北市長選舉蔣萬安勝率約67%、沈伯洋約34%；2026地方選舉勝出政黨KMT約78%、DPP約23%。市場認為台灣地方政治短期結構性優勢未根本翻轉，但外部衝擊可快速影響資產價格。</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>主題</th><th>溫度</th><th>主要聲音</th></tr></thead>
-        <tbody>
-          <tr><td>美國選舉</td><td>觀望為主</td><td>兩黨挺台傳統 vs 部分進步派擔憂</td></tr>
-          <tr><td>永豐事件</td><td>信任受損</td><td>「錢退了但心沒退」</td></tr>
-          <tr><td>台股外資</td><td>短期恐慌後半信半疑</td><td>賣超規模被反覆提及</td></tr>
-          <tr><td>地方選戰</td><td>高溫檢視</td><td>假訊息與帶風向指控</td></tr>
-          <tr><td>Polymarket</td><td>結構優勢未翻轉</td><td>台北市長約67%／地方KMT約78%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="item"><h4>美國選舉反應</h4><p>X上的討論以美國選舉結果為全球主軸，台灣相關則聚焦影響評估與本地事件。對美國藍潮的反應包括：承認兩黨皆有挺台傳統者，以及擔憂部分進步派議員對台支持強度者；整體偏觀望而非極端。</p></div>
-    <div class="item"><h4>永豐事件</h4><p>引發對銀行系統信任的質疑，「錢退了但心沒退」「供應商漏洞再次發生」的聲音明顯，夾雜資安疲勞感。</p></div>
-    <div class="item"><h4>台股與外資</h4><p>震盪期間出現短期恐慌與後續半信半疑的拉回討論，外資賣超規模被反覆提及。</p></div>
-    <div class="item"><h4>地方選戰</h4><p>討論溫度高，雙方支持者互相檢視言論與政績，假訊息與帶風向指控頻繁。整體溫度不是集體情緒爆發，而是對外部變數傳導速度與內部信任薄弱的實務性擔憂。日常生活話題（天氣、娛樂、消費）提供一定緩衝。</p></div>
-    <div class="item"><h4>Polymarket</h4><p>台北市長選舉蔣萬安勝率約67%、沈伯洋約34%；2026地方選舉勝出政黨KMT約78%、DPP約23%。市場認為台灣地方政治短期結構性優勢未根本翻轉，但外部衝擊可快速影響資產價格。</p></div>
-    <div class="sources"><strong>延伸連結</strong><a href="https://polymarket.com/" target="_blank">Polymarket</a><a href="https://x.com/search?q=2026%20midterms" target="_blank">X Search: 2026 midterms</a></div>
-  </section>
-
-  <section id="review" class="section">
-    <div class="kicker">Review</div>
-    <h2>過程、學習與規則</h2>
-    <div class="review">
-      <h4>今日過程與修正</h4>
-      <p>一開始只有總覽層，缺少先前較細的十則清單與台灣／社群細節 → 補上分層結構。</p>
-      <p>缺少表格與延伸連結 → 每個分類加入精簡表與代表性 sources。</p>
-      <p>視覺僅文字 → 整合用戶提供的六張第三方 infographic，並加入 Grok 自行生成的簡易視覺（公開版本圖片仍在處理中，後續會補上）。</p>
-      <p>Calendar 從總覽移到最上方，後依使用者要求移到 Review 後面。</p>
-      <p>每個分類原本共用同一段總覽 → 改為各有自己的 Daily Briefing。</p>
-      <p>內容在中間版本被過度精簡 → 依使用者要求恢復較完整細節，第一版寧可詳實。</p>
-      <p><strong>GitHub Pages 設定過程（今天最艱難的部分）</strong>：手機版多次嘗試進入 Settings / Pages 都得到 404。改為在 Chrome 要求桌面版網站後，才成功看到完整導覽列與 Settings。依序點選 Settings → 左側 Pages → Source 選 Deploy from a branch → Branch 選 main / (root) → Save。設定完成後，固定網址 https://changyeeming.github.io/grok-digest/ 開始運作。過程中多次走錯路，最終靠切換桌面版完成。此段必須記錄，因為它比最終結果更有學習價值。</p>
-
-      <h4>從錯誤中學到的</h4>
-      <p>總覽層不能取代細節清單；兩者需要同時存在才完整。</p>
-      <p>表格與延伸連結是快速掃描與深入的必要配套，不是可選項。</p>
-      <p>過程修正必須被記錄，否則每天都像從零開始。知道哪裡曾經漏掉、為什麼補上，才能讓每天的工作真正累積。</p>
-      <p>手機版 GitHub Settings 經常隱藏或 404，需切換桌面版或給直接路徑。</p>
-      <p>第一版內容寧可詳實，不要過度簡潔。簡潔可以之後再修，但細節一旦被刪掉就難找回。</p>
-
-      <h4>AI Takeaway</h4>
-      <p>從資訊聚合與即時反應的角度，今日最清晰的模式是「單一高影響政治事件 + 多個本地脆弱點」的疊加。市場與社群的反應速度遠快於結構性改變的速度：股市可在數小時內大幅波動，銀行信任可在單一漏洞事件中受損，但供應鏈集中度、選舉制度與地緣依賴的調整需要更長時間。預測市場在此環境下提供相對誠實的定價，但仍受流動性與事件定義清晰度限制。後續兩週的關鍵觀察點將是美國國會新格局下的實際政策互動、台灣股市與匯率的持續消化、以及地方選舉中的訊息環境變化。</p>
-      <p style="margin-top:10px;">今天建立的 MVP 1.0 把「最終結果」與「過程修正」放在同一個地方。這對長期有用：知道哪裡曾經漏掉、為什麼補上，才能讓每天的工作真正累積，而不是每天從零開始。今天花的時間偏多，主要卡在 GitHub Pages 的手機操作路徑，這也是必須被記錄下來的部分。</p>
-
-      <h4>當前規則（MVP 1.0）</h4>
-      <p>觸發詞：Go 或 Grok Digest。</p>
-      <p>產出單一檔案或更新公開 repo。結構包含：分類導覽、各分類自己的 Daily Briefing、細節清單、精簡表格、延伸連結、視覺元素、Review、Calendar。</p>
-      <p>Review 必須包含：當日過程修正與錯誤、從中學到的正確做法、AI takeaway、當前規則版本，以及重要技術設定過程。</p>
-      <p>第一版內容寧可詳實，不要過度簡潔。</p>
-      <p>視覺：優先使用用戶提供的第三方 infographic；Grok 可自行生成簡易圖像；更高品質可由其他工具補強。</p>
-      <p>公開網址：https://changyeeming.github.io/grok-digest/</p>
-    </div>
-  </section>
-
-  <section id="calendar" class="section">
-    <div class="kicker">Calendar</div>
-    <h2>November 2026</h2>
-    <div class="calendar">
-      <div style="font-family:var(--serif);font-weight:600;margin-bottom:12px;">November 2026</div>
-      <div class="calendar-grid">
-        <div class="day-name">日</div><div class="day-name">一</div><div class="day-name">二</div><div class="day-name">三</div><div class="day-name">四</div><div class="day-name">五</div><div class="day-name">六</div>
-        <div></div><div></div><div></div><div></div><div></div><div></div><div class="date">1</div>
-        <div class="date">2</div><div class="date">3</div><div class="date">4</div><div class="date today">5</div><div class="date">6</div><div class="date">7</div><div class="date">8</div>
-        <div class="date">9</div><div class="date">10</div><div class="date">11</div><div class="date">12</div><div class="date">13</div><div class="date">14</div><div class="date">15</div>
-        <div class="date">16</div><div class="date">17</div><div class="date">18</div><div class="date">19</div><div class="date">20</div><div class="date">21</div><div class="date">22</div>
-        <div class="date">23</div><div class="date">24</div><div class="date">25</div><div class="date">26</div><div class="date">27</div><div class="date">28</div><div class="date">29</div>
-        <div class="date">30</div>
+    <section id="world" class="section">
+      <div class="kicker">World</div>
+      <h2>紐西蘭大選與歐洲抗議持續</h2>
+      <div class="brief">紐西蘭大選投票結束，初步結果顯示工黨在普選票領先、國家黨席次較多。歐洲多國炸彈威脅與法國抗議持續。巴拉圭新總統就任後續、波蘭克拉科夫槍擊事件等並列。</div>
+      <div class="visual"><div class="big">NZ</div><div class="label">紐西蘭大選初步結果</div></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>事件</th><th>要點</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>紐西蘭大選</td><td>初步結果工黨得票領先</td></tr>
+            <tr><td>2</td><td>法國抗議</td><td>第四週末，約 14.6 萬人</td></tr>
+            <tr><td>3</td><td>波蘭槍擊</td><td>克拉科夫 9 死 15 傷</td></tr>
+            <tr><td>4</td><td>蘇丹衝突</td><td>政府軍收復部分地區</td></tr>
+            <tr><td>5</td><td>也門空襲</td><td>沙烏地空襲造成傷亡</td></tr>
+            <tr><td>6</td><td>巴拉圭</td><td>新總統就任後續</td></tr>
+            <tr><td>7</td><td>歐洲炸彈威脅</td><td>多國航班與電視台受影響</td></tr>
+            <tr><td>8</td><td>其他</td><td>中國確認三方峰會討論中</td></tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-    <p>目前僅 11 月 5 日有內容。之後每天新增時會自動高亮。</p>
-  </section>
+      <div class="item"><h4>1. 紐西蘭大選初步結果</h4><p>投票結束，初步結果工黨在普選票領先，國家黨席次較多，特別票尚未計完。現任總理 Luxon 與工黨 Hipkins 競爭。</p></div>
+      <div class="item"><h4>2. 法國抗議持續</h4><p>工會、黃背心與學生進行第四個週末抗議，約 14.6 萬人參與。</p></div>
+      <div class="item"><h4>3. 波蘭克拉科夫槍擊</h4><p>市中心駕車掃射造成 9 死 15 傷，兇手在家中殺害家人後被警察制服。</p></div>
+      <div class="item"><h4>4–10. 其他</h4><p>蘇丹政府軍收復地區、沙烏地對也門空襲、歐洲炸彈威脅持續、中國確認討論中美俄三方峰會可能性等。</p></div>
+      <div class="sources"><strong>延伸連結</strong><a href="https://en.wikipedia.org/wiki/Portal:Current_events" target="_blank">Wikipedia</a><a href="https://www.reuters.com/" target="_blank">Reuters</a></div>
+    </section>
 
-  <p class="note">Grok Digest · 2026-11-05 · MVP 1.0 · https://changyeeming.github.io/grok-digest/</p>
+    <section id="ai" class="section">
+      <div class="kicker">AI</div>
+      <h2>Anthropic IPO 估值下修，OpenAI 融資落地</h2>
+      <div class="brief">Anthropic 推進 IPO，市場估值從先前較高預期下修至約 1.25–1.75 兆美元，目標籌資 800–1000 億。OpenAI 完成 110 億美元融資，估值 1.25 兆。Google 收購 Crusoe 未完成的懷俄明資料中心場地。METR 報告持續討論 Anthropic 模型自我加速。</div>
+      <div class="visual"><div class="big">1.25T</div><div class="label">OpenAI 估值 · 110 億融資完成</div></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>主題</th><th>要點</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Anthropic IPO</td><td>估值下修至 1.25–1.75 兆</td></tr>
+            <tr><td>2</td><td>OpenAI 融資</td><td>110 億，估值 1.25 兆</td></tr>
+            <tr><td>3</td><td>Google 資料中心</td><td>收購 Crusoe 懷俄明場地</td></tr>
+            <tr><td>4</td><td>METR 報告</td><td>Anthropic 加速約 2 倍</td></tr>
+            <tr><td>5</td><td>其他</td><td>Inkling 2、BioBasicsBench 等</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="item"><h4>1. Anthropic IPO 估值下修</h4><p>公司推進 Thanksgiving 前 IPO，市場估值討論區間下修至約 1.25–1.75 兆，籌資目標 800–1000 億。</p></div>
+      <div class="item"><h4>2. OpenAI 110 億融資</h4><p>完成新一輪融資，估值約 1.25 兆美元。</p></div>
+      <div class="item"><h4>3. Google 收購資料中心場地</h4><p>收購 Crusoe 未完成的懷俄明場地，計畫投資 170 億美元開發。</p></div>
+      <div class="item"><h4>4. METR 持續討論</h4><p>報告指出 Anthropic 模型能力約以兩倍速度提升，大部分加速來自 AI 自身。</p></div>
+      <div class="sources"><strong>延伸連結</strong><a href="https://www.anthropic.com/" target="_blank">Anthropic</a><a href="https://openai.com/" target="_blank">OpenAI</a></div>
+    </section>
+
+    <section id="culture" class="section">
+      <div class="kicker">Culture</div>
+      <h2>選舉與日常交織</h2>
+      <div class="brief">本週文化與娛樂相對平穩。台灣地方選舉倒數成為主要社會文化現象，候選人車掃與造勢活動升溫。國際上紐西蘭大選結果出爐。</div>
+      <div class="visual"><div class="big">選舉</div><div class="label">台灣九合一倒數 · 社會文化焦點</div></div>
+      <div class="item"><h4>主要觀察</h4><p>選舉活動本身成為文化事件。百貨周年慶等消費活動持續。</p></div>
+      <div class="sources"><strong>延伸連結</strong><a href="https://news.ltn.com.tw/" target="_blank">自由時報</a></div>
+    </section>
+
+    <section id="taiwan" class="section">
+      <div class="kicker">Taiwan</div>
+      <h2>選舉倒數，外交與市場後續</h2>
+      <div class="brief">九合一選舉倒數，台北市長選戰車掃與造勢持續升溫，沈伯洋與蔣萬安雙方活動密集。外交部關閉駐巴紐代表處後續仍受關注。台股大跌後市場觀察護盤效果與反彈可能。</div>
+      <div class="visual"><div class="big">選舉</div><div class="label">九合一倒數 · 台北市長焦點</div></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>主題</th><th>要點</th></tr></thead>
+          <tbody>
+            <tr><td>選舉</td><td>台北市長車掃與造勢升溫</td></tr>
+            <tr><td>外交</td><td>關閉駐巴紐代表處後續</td></tr>
+            <tr><td>市場</td><td>台股大跌後觀察</td></tr>
+            <tr><td>其他</td><td>中共可能未宣布演習示警</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="item"><h4>1. 選舉倒數</h4><p>台北市長候選人沈伯洋車掃，副總統與運動部長現身；蔣萬安南下助選。雙方活動密集。</p></div>
+      <div class="item"><h4>2. 外交後續</h4><p>關閉駐巴紐代表處後，相關討論持續。</p></div>
+      <div class="item"><h4>3. 市場</h4><p>台股大跌後，市場關注護盤措施效果與潛在反彈。</p></div>
+      <div class="sources"><strong>延伸連結</strong><a href="https://focustaiwan.tw/" target="_blank">Focus Taiwan</a><a href="https://news.ltn.com.tw/" target="_blank">自由時報</a></div>
+    </section>
+
+    <section id="social" class="section">
+      <div class="kicker">Social Voices</div>
+      <h2>選舉與市場情緒</h2>
+      <div class="brief">社群討論集中在台灣地方選舉倒數與候選人活動，以及台股大跌後的觀望。紐西蘭大選結果也有部分關注。整體偏向觀察與即時反應。</div>
+      <div class="visual"><div class="big">觀望</div><div class="label">選舉倒數主要情緒</div></div>
+      <div class="item"><h4>主要觀察</h4><p>選舉活動被快速轉成即時討論。市場情緒從恐慌轉向觀察護盤與反彈可能。</p></div>
+      <div class="sources"><strong>延伸連結</strong><a href="https://x.com/" target="_blank">X</a></div>
+    </section>
+
+    <section id="review" class="section">
+      <div class="kicker">Review</div>
+      <h2>過程與規則</h2>
+      <div class="review">
+        <h4>今日過程</h4>
+        <p>直接生成 11/08 完整版，並在日曆加入 11/07 切換（簡易 archive）。視覺繼續用輕量數字卡片。公開網址目前仍為先前版本，本檔為本機完整可開版本。</p>
+        <h4>從中學到的</h4>
+        <p>日曆切換比完整多檔更容易在單一 HTML 實現。新對話框觸發仍可能不完整，建議保留本對話框或準備短提示詞。</p>
+        <h4>AI Takeaway</h4>
+        <p>Archive 用簡單日期切換就夠用，不必一開始就做複雜歷史頁。內容維持詳實，視覺輕量，符合省用量原則。</p>
+        <h4>當前規則版本</h4>
+        <p>MVP 1.0。公開網址：https://changyeeming.github.io/grok-digest/ 。今日本機檔可直接用 Chrome 開啟。</p>
+      </div>
+    </section>
+
+    <section id="calendar" class="section">
+      <div class="kicker">Calendar</div>
+      <h2>2026 年 11 月</h2>
+      <div class="calendar">
+        <div class="calendar-grid">
+          <div class="day-name">日</div><div class="day-name">一</div><div class="day-name">二</div><div class="day-name">三</div><div class="day-name">四</div><div class="day-name">五</div><div class="day-name">六</div>
+          <div class="date"></div><div class="date"></div><div class="date"></div><div class="date"></div><div class="date"></div><div class="date"></div><div class="date">1</div>
+          <div class="date">2</div><div class="date">3</div><div class="date">4</div><div class="date">5</div><div class="date">6</div><div class="date archived">7</div>
+          <div class="date today">8</div><div class="date">9</div><div class="date">10</div><div class="date">11</div><div class="date">12</div><div class="date">13</div><div class="date">14</div>
+          <div class="date">15</div><div class="date">16</div><div class="date">17</div><div class="date">18</div><div class="date">19</div><div class="date">20</div><div class="date">21</div>
+          <div class="date">22</div><div class="date">23</div><div class="date">24</div><div class="date">25</div><div class="date">26</div><div class="date">27</div><div class="date">28</div>
+          <div class="date">29</div><div class="date">30</div>
+        </div>
+      </div>
+      <p style="font-size:0.85rem;color:#6b6b6b;margin-top:8px;">點上方日期按鈕可切換 11/07 與 11/08。</p>
+    </section>
+  </div>
+
+  <!-- Placeholder for 11/07 (simplified note) -->
+  <div id="content-1107" style="display:none;">
+    <section class="section active">
+      <div class="kicker">Archive · 11/07</div>
+      <h2>昨日版本已存檔</h2>
+      <div class="brief">11 月 7 日版本（台股大跌、Miller 任命、GPT-6 Cyber 等）已生成。本頁為簡易切換示意，完整內容請參考先前下載的 11/07 HTML 檔案。未來可逐步把完整內容內嵌。</div>
+      <div class="visual"><div class="big">11/07</div><div class="label">昨日完整版請看先前檔案</div></div>
+    </section>
+  </div>
+
+  <div class="note">Grok Digest · 2026-11-08 · MVP 1.0 · 單一 HTML，可直接用 Chrome 開啟。日曆可切換至 11/07 示意。</div>
 </div>
 <script>
-document.querySelectorAll('.nav button').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.querySelectorAll('.nav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     btn.classList.add('active');
-    document.getElementById(btn.dataset.target).classList.add('active');
+    const target = document.getElementById(btn.dataset.target);
+    if (target) target.classList.add('active');
   });
 });
+function switchDate(d) {
+  document.getElementById('content-1108').style.display = d === '1108' ? 'block' : 'none';
+  document.getElementById('content-1107').style.display = d === '1107' ? 'block' : 'none';
+  document.querySelectorAll('.date-switch button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
 </script>
-</body></html>
+</body>
+</html>
