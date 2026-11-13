@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grok Digest · 2026-11-08</title>
+<title>Grok Digest · Social Map · 2026-11-13</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&display=swap" rel="stylesheet">
@@ -48,127 +48,66 @@ td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top}
 .date-switch{margin-bottom:16px;font-size:0.85rem}
 .date-switch button{margin-right:8px;padding:4px 10px;border:1px solid var(--border);background:#fff;border-radius:4px;cursor:pointer}
 .date-switch button.active{background:var(--accent);color:#fff}
+.map-img{max-width:100%;border-radius:6px;margin:16px 0;border:1px solid var(--border)}
 @media(max-width:640px){h2{font-size:1.55rem}.nav button{padding:6px 10px;font-size:0.8rem}}
 </style>
 </head>
 <body>
 <div class="app">
   <header class="header">
-    <div class="logo"><div class="logo-mark">G</div><h1>Grok Digest</h1></div>
-    <div class="date-line">2026年11月8日 · 星期日 · MVP 1.0</div>
+    <div class="logo"><div class="logo-mark">G</div><h1>Grok Digest · Social Map</h1></div>
+    <div class="date-line">2026年11月13日 · 星期五 · MVP 1.0</div>
     <div class="date-switch">
-      <button class="active" onclick="switchDate('1108')">11/08</button>
-      <button onclick="switchDate('1107')">11/07</button>
+      <button class="active" onclick="switchDate('1113')">11/13 今天</button>
+      <button onclick="switchDate('1112')">11/12 昨天</button>
+      <button onclick="switchDate('1108')">11/08 存檔</button>
     </div>
   </header>
-  <nav class="nav">
-    <button class="active" data-target="overview">總覽</button>
-    <button data-target="world">世界</button>
-    <button data-target="ai">AI</button>
-    <button data-target="culture">文化</button>
-    <button data-target="taiwan">台灣</button>
-    <button data-target="social">Social Voices</button>
+  <nav class="nav" id="nav-1113">
+    <button class="active" data-target="overall">總覽</button>
+    <button data-target="newsmap">小 Grok 新聞地圖</button>
+    <button data-target="socialmap">小 Grok Social 地圖</button>
     <button data-target="review">Review</button>
     <button data-target="calendar">Calendar</button>
   </nav>
 
-  <!-- 11/08 content (default) -->
-  <div id="content-1108">
-    <section id="overview" class="section active">
-      <div class="kicker">Overview</div>
-      <h2>紐西蘭大選初步結果出爐，Anthropic IPO 估值下修，台灣選舉倒數持續</h2>
-      <div class="brief">紐西蘭大選投票結束，初步結果工黨領先普選得票、國家黨席次較多，特別票尚未計完。AI 方面 Anthropic 推進 IPO，但市場估值從先前預期下修至約 1.25–1.75 兆；OpenAI 完成 110 億融資估值 1.25 兆。台灣九合一選舉倒數，台北市長選戰車掃與造勢升溫，外交部關閉駐巴紐代表處後續仍受關注。</div>
-      <div class="visual"><div class="big">NZ</div><div class="label">紐西蘭大選 · 初步結果工黨領先得票</div></div>
+  <!-- 11/13 content (default) -->
+  <div id="content-1113">
+    <section id="overall" class="section active">
+      <div class="kicker">Overall · 11/13</div>
+      <h2>黃仁勳辭任輝達執行長，台灣九合一選舉競選正式開跑</h2>
+      <div class="brief">輝達執行長黃仁勳因婚外情醜聞（涉及中國間諜指控與下屬關係）辭去執行長、總裁與董事職務，CFO Colette Kress 暫代。台灣九合一選舉直轄市長競選活動今日正式開始，中選會公布8大禁令，11/18起民調封關，深偽影像未下架重罰千萬。AI方面，非營利組織起訴OpenAI、Anthropic、Google等要求暫停前沿模型開發。天氣今日穩定，明日有雨。</div>
+      <div class="visual"><div class="big">辭任</div><div class="label">黃仁勳 · 輝達執行長請辭</div></div>
     </section>
 
-    <section id="world" class="section">
-      <div class="kicker">World</div>
-      <h2>紐西蘭大選與歐洲抗議持續</h2>
-      <div class="brief">紐西蘭大選投票結束，初步結果顯示工黨在普選票領先、國家黨席次較多。歐洲多國炸彈威脅與法國抗議持續。巴拉圭新總統就任後續、波蘭克拉科夫槍擊事件等並列。</div>
-      <div class="visual"><div class="big">NZ</div><div class="label">紐西蘭大選初步結果</div></div>
+    <section id="newsmap" class="section">
+      <div class="kicker">小 Grok 新聞地圖</div>
+      <h2>今日全球與台灣新聞焦點地圖</h2>
+      <div class="brief">重點事件分布：美國矽谷輝達高層異動、台灣選舉倒數與規範啟動、舊金山AI訴訟、西班牙高鐵事故等。</div>
+      <div class="visual"><div class="big">地圖</div><div class="label">小 Grok 新聞地圖 · 11/13</div></div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>#</th><th>事件</th><th>要點</th></tr></thead>
+          <thead><tr><th>#</th><th>事件</th><th>地點/要點</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>紐西蘭大選</td><td>初步結果工黨得票領先</td></tr>
-            <tr><td>2</td><td>法國抗議</td><td>第四週末，約 14.6 萬人</td></tr>
-            <tr><td>3</td><td>波蘭槍擊</td><td>克拉科夫 9 死 15 傷</td></tr>
-            <tr><td>4</td><td>蘇丹衝突</td><td>政府軍收復部分地區</td></tr>
-            <tr><td>5</td><td>也門空襲</td><td>沙烏地空襲造成傷亡</td></tr>
-            <tr><td>6</td><td>巴拉圭</td><td>新總統就任後續</td></tr>
-            <tr><td>7</td><td>歐洲炸彈威脅</td><td>多國航班與電視台受影響</td></tr>
-            <tr><td>8</td><td>其他</td><td>中國確認三方峰會討論中</td></tr>
+            <tr><td>1</td><td>黃仁勳辭任</td><td>美國/台灣相關 · CFO暫代</td></tr>
+            <tr><td>2</td><td>九合一選舉開跑</td><td>台灣 · 直轄市長15天競選</td></tr>
+            <tr><td>3</td><td>AI前沿訴訟</td><td>舊金山 · 要求暫停開發</td></tr>
+            <tr><td>4</td><td>選舉8大禁令</td><td>台灣 · 11/18民調封關</td></tr>
+            <tr><td>5</td><td>天氣</td><td>台灣 · 今日晴，明日雨</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="item"><h4>1. 紐西蘭大選初步結果</h4><p>投票結束，初步結果工黨在普選票領先，國家黨席次較多，特別票尚未計完。現任總理 Luxon 與工黨 Hipkins 競爭。</p></div>
-      <div class="item"><h4>2. 法國抗議持續</h4><p>工會、黃背心與學生進行第四個週末抗議，約 14.6 萬人參與。</p></div>
-      <div class="item"><h4>3. 波蘭克拉科夫槍擊</h4><p>市中心駕車掃射造成 9 死 15 傷，兇手在家中殺害家人後被警察制服。</p></div>
-      <div class="item"><h4>4–10. 其他</h4><p>蘇丹政府軍收復地區、沙烏地對也門空襲、歐洲炸彈威脅持續、中國確認討論中美俄三方峰會可能性等。</p></div>
-      <div class="sources"><strong>延伸連結</strong><a href="https://en.wikipedia.org/wiki/Portal:Current_events" target="_blank">Wikipedia</a><a href="https://www.reuters.com/" target="_blank">Reuters</a></div>
+      <div class="item"><h4>1. 輝達執行長黃仁勳辭任</h4><p>因婚外情連爆（含中國間諜指控與公司下屬），董事會接受辭職。Colette Kress暫任執行長。股價波動大。</p></div>
+      <div class="item"><h4>2. 台灣九合一選舉</h4><p>今日起直轄市長競選正式開始。中選會提醒8大規範，防深偽與賄選，11月18日起禁發布民調。</p></div>
+      <div class="sources"><strong>延伸連結</strong><a href="https://news.ltn.com.tw/" target="_blank">自由時報</a><a href="https://techcrunch.com/" target="_blank">TechCrunch</a></div>
     </section>
 
-    <section id="ai" class="section">
-      <div class="kicker">AI</div>
-      <h2>Anthropic IPO 估值下修，OpenAI 融資落地</h2>
-      <div class="brief">Anthropic 推進 IPO，市場估值從先前較高預期下修至約 1.25–1.75 兆美元，目標籌資 800–1000 億。OpenAI 完成 110 億美元融資，估值 1.25 兆。Google 收購 Crusoe 未完成的懷俄明資料中心場地。METR 報告持續討論 Anthropic 模型自我加速。</div>
-      <div class="visual"><div class="big">1.25T</div><div class="label">OpenAI 估值 · 110 億融資完成</div></div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>#</th><th>主題</th><th>要點</th></tr></thead>
-          <tbody>
-            <tr><td>1</td><td>Anthropic IPO</td><td>估值下修至 1.25–1.75 兆</td></tr>
-            <tr><td>2</td><td>OpenAI 融資</td><td>110 億，估值 1.25 兆</td></tr>
-            <tr><td>3</td><td>Google 資料中心</td><td>收購 Crusoe 懷俄明場地</td></tr>
-            <tr><td>4</td><td>METR 報告</td><td>Anthropic 加速約 2 倍</td></tr>
-            <tr><td>5</td><td>其他</td><td>Inkling 2、BioBasicsBench 等</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="item"><h4>1. Anthropic IPO 估值下修</h4><p>公司推進 Thanksgiving 前 IPO，市場估值討論區間下修至約 1.25–1.75 兆，籌資目標 800–1000 億。</p></div>
-      <div class="item"><h4>2. OpenAI 110 億融資</h4><p>完成新一輪融資，估值約 1.25 兆美元。</p></div>
-      <div class="item"><h4>3. Google 收購資料中心場地</h4><p>收購 Crusoe 未完成的懷俄明場地，計畫投資 170 億美元開發。</p></div>
-      <div class="item"><h4>4. METR 持續討論</h4><p>報告指出 Anthropic 模型能力約以兩倍速度提升，大部分加速來自 AI 自身。</p></div>
-      <div class="sources"><strong>延伸連結</strong><a href="https://www.anthropic.com/" target="_blank">Anthropic</a><a href="https://openai.com/" target="_blank">OpenAI</a></div>
-    </section>
-
-    <section id="culture" class="section">
-      <div class="kicker">Culture</div>
-      <h2>選舉與日常交織</h2>
-      <div class="brief">本週文化與娛樂相對平穩。台灣地方選舉倒數成為主要社會文化現象，候選人車掃與造勢活動升溫。國際上紐西蘭大選結果出爐。</div>
-      <div class="visual"><div class="big">選舉</div><div class="label">台灣九合一倒數 · 社會文化焦點</div></div>
-      <div class="item"><h4>主要觀察</h4><p>選舉活動本身成為文化事件。百貨周年慶等消費活動持續。</p></div>
-      <div class="sources"><strong>延伸連結</strong><a href="https://news.ltn.com.tw/" target="_blank">自由時報</a></div>
-    </section>
-
-    <section id="taiwan" class="section">
-      <div class="kicker">Taiwan</div>
-      <h2>選舉倒數，外交與市場後續</h2>
-      <div class="brief">九合一選舉倒數，台北市長選戰車掃與造勢持續升溫，沈伯洋與蔣萬安雙方活動密集。外交部關閉駐巴紐代表處後續仍受關注。台股大跌後市場觀察護盤效果與反彈可能。</div>
-      <div class="visual"><div class="big">選舉</div><div class="label">九合一倒數 · 台北市長焦點</div></div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>主題</th><th>要點</th></tr></thead>
-          <tbody>
-            <tr><td>選舉</td><td>台北市長車掃與造勢升溫</td></tr>
-            <tr><td>外交</td><td>關閉駐巴紐代表處後續</td></tr>
-            <tr><td>市場</td><td>台股大跌後觀察</td></tr>
-            <tr><td>其他</td><td>中共可能未宣布演習示警</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="item"><h4>1. 選舉倒數</h4><p>台北市長候選人沈伯洋車掃，副總統與運動部長現身；蔣萬安南下助選。雙方活動密集。</p></div>
-      <div class="item"><h4>2. 外交後續</h4><p>關閉駐巴紐代表處後，相關討論持續。</p></div>
-      <div class="item"><h4>3. 市場</h4><p>台股大跌後，市場關注護盤措施效果與潛在反彈。</p></div>
-      <div class="sources"><strong>延伸連結</strong><a href="https://focustaiwan.tw/" target="_blank">Focus Taiwan</a><a href="https://news.ltn.com.tw/" target="_blank">自由時報</a></div>
-    </section>
-
-    <section id="social" class="section">
-      <div class="kicker">Social Voices</div>
-      <h2>選舉與市場情緒</h2>
-      <div class="brief">社群討論集中在台灣地方選舉倒數與候選人活動，以及台股大跌後的觀望。紐西蘭大選結果也有部分關注。整體偏向觀察與即時反應。</div>
-      <div class="visual"><div class="big">觀望</div><div class="label">選舉倒數主要情緒</div></div>
-      <div class="item"><h4>主要觀察</h4><p>選舉活動被快速轉成即時討論。市場情緒從恐慌轉向觀察護盤與反彈可能。</p></div>
+    <section id="socialmap" class="section">
+      <div class="kicker">小 Grok Social 地圖</div>
+      <h2>今日社群討論節點地圖</h2>
+      <div class="brief">X/Twitter 主要聲量：輝達CEO醜聞討論、台灣地方選舉熱議、AI訴訟反應、市場下跌情緒。</div>
+      <div class="visual"><div class="big">Social</div><div class="label">小 Grok Social 地圖 · 11/13</div></div>
+      <div class="item"><h4>主要聲量群</h4><p>NVIDIA CEO 醜聞：內線交易指控、股價與聲譽。台灣選舉：縣市長選情、投票率。AI訴訟：模型安全爭議。市場：科技股拋售與避險。</p></div>
       <div class="sources"><strong>延伸連結</strong><a href="https://x.com/" target="_blank">X</a></div>
     </section>
 
@@ -177,13 +116,13 @@ td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top}
       <h2>過程與規則</h2>
       <div class="review">
         <h4>今日過程</h4>
-        <p>直接生成 11/08 完整版，並在日曆加入 11/07 切換（簡易 archive）。視覺繼續用輕量數字卡片。公開網址目前仍為先前版本，本檔為本機完整可開版本。</p>
+        <p>跑今天的 Social Map，包含小 Grok 新聞地圖與小 Grok Social 地圖。設計 Calendar 切換昨天/今天。生成簡易示意圖。內容基於即時搜尋新聞與X討論。</p>
         <h4>從中學到的</h4>
-        <p>日曆切換比完整多檔更容易在單一 HTML 實現。新對話框觸發仍可能不完整，建議保留本對話框或準備短提示詞。</p>
+        <p>日期切換與地圖分頁可在單一HTML實現。視覺用生成圖增強。保持詳實。</p>
         <h4>AI Takeaway</h4>
-        <p>Archive 用簡單日期切換就夠用，不必一開始就做複雜歷史頁。內容維持詳實，視覺輕量，符合省用量原則。</p>
+        <p>地圖式呈現幫助快速抓焦點。繼續輕量視覺。</p>
         <h4>當前規則版本</h4>
-        <p>MVP 1.0。公開網址：https://changyeeming.github.io/grok-digest/ 。今日本機檔可直接用 Chrome 開啟。</p>
+        <p>MVP 1.0。公開網址：https://changyeeming.github.io/grok-digest/</p>
       </div>
     </section>
 
@@ -195,27 +134,37 @@ td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top}
           <div class="day-name">日</div><div class="day-name">一</div><div class="day-name">二</div><div class="day-name">三</div><div class="day-name">四</div><div class="day-name">五</div><div class="day-name">六</div>
           <div class="date"></div><div class="date"></div><div class="date"></div><div class="date"></div><div class="date"></div><div class="date"></div><div class="date">1</div>
           <div class="date">2</div><div class="date">3</div><div class="date">4</div><div class="date">5</div><div class="date">6</div><div class="date archived">7</div>
-          <div class="date today">8</div><div class="date">9</div><div class="date">10</div><div class="date">11</div><div class="date">12</div><div class="date">13</div><div class="date">14</div>
+          <div class="date archived">8</div><div class="date">9</div><div class="date">10</div><div class="date">11</div><div class="date archived">12</div><div class="date today">13</div><div class="date">14</div>
           <div class="date">15</div><div class="date">16</div><div class="date">17</div><div class="date">18</div><div class="date">19</div><div class="date">20</div><div class="date">21</div>
           <div class="date">22</div><div class="date">23</div><div class="date">24</div><div class="date">25</div><div class="date">26</div><div class="date">27</div><div class="date">28</div>
           <div class="date">29</div><div class="date">30</div>
         </div>
       </div>
-      <p style="font-size:0.85rem;color:#6b6b6b;margin-top:8px;">點上方日期按鈕可切換 11/07 與 11/08。</p>
+      <p style="font-size:0.85rem;color:#6b6b6b;margin-top:8px;">點上方日期按鈕切換今天、昨天與存檔。</p>
     </section>
   </div>
 
-  <!-- Placeholder for 11/07 (simplified note) -->
-  <div id="content-1107" style="display:none;">
+  <!-- 11/12 placeholder -->
+  <div id="content-1112" style="display:none;">
     <section class="section active">
-      <div class="kicker">Archive · 11/07</div>
-      <h2>昨日版本已存檔</h2>
-      <div class="brief">11 月 7 日版本（台股大跌、Miller 任命、GPT-6 Cyber 等）已生成。本頁為簡易切換示意，完整內容請參考先前下載的 11/07 HTML 檔案。未來可逐步把完整內容內嵌。</div>
-      <div class="visual"><div class="big">11/07</div><div class="label">昨日完整版請看先前檔案</div></div>
+      <div class="kicker">Archive · 11/12</div>
+      <h2>昨天版本</h2>
+      <div class="brief">11月12日重點包括台股大跌、黃仁勳醜聞發酵、選舉準備等。完整內容可參考先前或後續補完。今日已整合進地圖。</div>
+      <div class="visual"><div class="big">11/12</div><div class="label">昨日摘要</div></div>
     </section>
   </div>
 
-  <div class="note">Grok Digest · 2026-11-08 · MVP 1.0 · 單一 HTML，可直接用 Chrome 開啟。日曆可切換至 11/07 示意。</div>
+  <!-- 11/08 archive note -->
+  <div id="content-1108" style="display:none;">
+    <section class="section active">
+      <div class="kicker">Archive · 11/08</div>
+      <h2>早期版本已存檔</h2>
+      <div class="brief">11月8日完整版（紐西蘭大選、Anthropic IPO等）已生成。本頁為切換示意。</div>
+      <div class="visual"><div class="big">11/08</div><div class="label">先前完整版</div></div>
+    </section>
+  </div>
+
+  <div class="note">Grok Digest · Social Map · 2026-11-13 · MVP 1.0 · 單一 HTML。Calendar 可切換日期。地圖為小 Grok 生成示意圖。</div>
 </div>
 <script>
 document.querySelectorAll('.nav button').forEach(btn => {
@@ -228,10 +177,12 @@ document.querySelectorAll('.nav button').forEach(btn => {
   });
 });
 function switchDate(d) {
+  document.getElementById('content-1113').style.display = d === '1113' ? 'block' : 'none';
+  document.getElementById('content-1112').style.display = d === '1112' ? 'block' : 'none';
   document.getElementById('content-1108').style.display = d === '1108' ? 'block' : 'none';
-  document.getElementById('content-1107').style.display = d === '1107' ? 'block' : 'none';
   document.querySelectorAll('.date-switch button').forEach(b => b.classList.remove('active'));
   event.target.classList.add('active');
+  document.getElementById('nav-1113').style.display = d === '1113' ? 'flex' : 'none';
 }
 </script>
 </body>
